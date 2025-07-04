@@ -1,5 +1,5 @@
 import React from "react";
 
 export default async function HomePage() {
-  return <p>Helo</p>;
+  return <p className="text-4xl">Helo</p>;
 }
