@@ -10,6 +10,7 @@ import { fileURLToPath } from "url";
 import { Media } from "./collections/Media";
 import { Users } from "./collections/Users";
 import { vercelBlobStorage } from "@payloadcms/storage-vercel-blob";
+import { Transactions } from "@/collections/Transactions";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -21,7 +22,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, Stores, Products],
+  collections: [Users, Media, Stores, Products, Transactions],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || "",
   typescript: {
