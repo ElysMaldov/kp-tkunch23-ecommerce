@@ -188,6 +188,7 @@ export interface Store {
  */
 export interface Product {
   id: string;
+  image: string | Media;
   name: string;
   priceIDR: number;
   stock: number;
@@ -333,6 +334,7 @@ export interface StoresSelect<T extends boolean = true> {
  * via the `definition` "products_select".
  */
 export interface ProductsSelect<T extends boolean = true> {
+  image?: T;
   name?: T;
   priceIDR?: T;
   stock?: T;

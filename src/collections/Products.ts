@@ -7,6 +7,12 @@ export const Products: CollectionConfig = {
   },
   fields: [
     {
+      name: "image",
+      type: "upload",
+      relationTo: "media",
+      required: true,
+    },
+    {
       name: "name",
       type: "text",
       required: true,
