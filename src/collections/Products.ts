@@ -1,4 +1,20 @@
-import type { CollectionConfig } from "payload";
+import { Product } from "@/payload-types";
+import type { CollectionConfig, FieldHook } from "payload";
+
+// TypeScript Generics
+const generateSlug: FieldHook<Product, string, Product> = ({ data }) => {
+  const name = data?.name;
+
+  if (name) {
+    // Hello Wolrd, Im okay
+    // hello-world-im-okay
+    const slug = name.toLowerCase().split(" ").join("-");
+
+    return slug;
+  }
+
+  return data?.id ?? (Math.random() * 2_000).toString();
+};
 
 export const Products: CollectionConfig = {
   slug: "products",
@@ -16,6 +32,14 @@ export const Products: CollectionConfig = {
       name: "name",
       type: "text",
       required: true,
+    },
+    {
+      name: "slug",
+      type: "text",
+      required: true,
+      hooks: {
+        beforeChange: [generateSlug],
+      },
     },
     {
       name: "priceIDR",
