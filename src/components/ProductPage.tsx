@@ -1,8 +1,9 @@
-import Image from "next/image";
-import { Star, Heart, Share2, ShoppingCart, Shield, Truck, RotateCcw } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import PaymentFormDialog from "@/components/PaymentFormDialog";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import { Heart, RotateCcw, Share2, Shield, ShoppingCart, Star, Truck } from "lucide-react";
+import Image from "next/image";
 import { ReactNode } from "react";
 
 interface ProductPageProps {
@@ -137,9 +138,8 @@ export default function ProductPage({ name, price, imageUrl, description }: Prod
                 <ShoppingCart className="w-5 h-5 mr-2" />
                 Add to Cart
               </Button>
-              <Button size="lg" variant="outline" className="flex-1 bg-transparent">
-                Buy Now
-              </Button>
+
+              <PaymentFormDialog />
             </div>
 
             <div className="text-center">
