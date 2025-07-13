@@ -220,8 +220,29 @@ export interface Product {
  */
 export interface Transaction {
   id: string;
+  orderId: string;
   product: string | Product;
   buyer: string | User;
+  status:
+    | 'authorize'
+    | 'capture'
+    | 'settlement'
+    | 'deny'
+    | 'pending'
+    | 'cancel'
+    | 'refund'
+    | 'partial_refund'
+    | 'chargeback'
+    | 'partial_chargeback'
+    | 'expire'
+    | 'failure';
+  paymentLink: string;
+  paid: number;
+  customerDetails: {
+    name: string;
+    email: string;
+    phone: string;
+  };
   updatedAt: string;
   createdAt: string;
 }
@@ -367,8 +388,19 @@ export interface ProductsSelect<T extends boolean = true> {
  * via the `definition` "transactions_select".
  */
 export interface TransactionsSelect<T extends boolean = true> {
+  orderId?: T;
   product?: T;
   buyer?: T;
+  status?: T;
+  paymentLink?: T;
+  paid?: T;
+  customerDetails?:
+    | T
+    | {
+        name?: T;
+        email?: T;
+        phone?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
 }
