@@ -33,8 +33,12 @@ export const createMidtransTransaction = async (
       email: email,
       phone: phone,
     },
+    callbacks: {
+      finish: "http://localhost:3000",
+    },
   };
 
+  // TODO simpan transaksi dan update transaksi sesuai dengan status di Midtrans -> HTTP Notifications
   const transaction: object = await snap.createTransaction(parameter);
 
   return transaction;

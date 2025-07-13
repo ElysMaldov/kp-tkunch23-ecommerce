@@ -19,24 +19,6 @@ interface ProductPageProps {
 export default function ProductPage({ name, price, imageUrl, description }: ProductPageProps) {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <Button
-        onClick={async () => {
-          const transaction = await createMidtransTransaction(
-            10_000,
-            "Reyhan",
-            "reyhan@gmail.com",
-            "+628724783",
-          );
-
-          console.log(transaction);
-
-          // @ts-expect-error
-          window.open(transaction.redirect_url, "_self");
-        }}
-      >
-        Test Midtrans function
-      </Button>
-
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
         {/* Product Image Section */}
         <div className="space-y-4">
@@ -160,7 +142,7 @@ export default function ProductPage({ name, price, imageUrl, description }: Prod
                 Add to Cart
               </Button>
 
-              <PaymentFormDialog />
+              <PaymentFormDialog grossAmount={price} />
             </div>
 
             <div className="text-center">
